@@ -1,0 +1,147 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+
+.card.allowed { border-color: #3DCC8040; }
+.card.denied  { border-color: #FF4D4D40; opacity: 0.7; }
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  height: 42px;
+  border-bottom: 1px solid var(--border);
+}
+
+.headerIcon { font-size: 16px; color: var(--yellow); }
+.toolLabel  { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--yellow); letter-spacing: 0.08em; }
+.toolName   { font-family: var(--font-mono); font-size: 14px; color: var(--text-secondary); flex: 1; }
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+}
+.badgeGreen { background: #3DCC8020; color: var(--green); }
+.badgeRed   { background: #FF4D4D20; color: var(--red); }
+
+.body { padding: 12px 14px; }
+
+.input {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border-radius: 6px;
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+/* ── Regular tool actions (3 buttons) ─────────────── */
+.actions {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+}
+
+.denyBtn, .allowAlwaysBtn, .allowBtn {
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+.denyBtn:hover, .allowAlwaysBtn:hover, .allowBtn:hover { opacity: 0.8; }
+
+.denyBtn      { background: var(--bg-hover); color: var(--text-secondary); border: 1px solid var(--border-mid); }
+.allowAlwaysBtn { background: #3DCC8020; color: var(--green); border: 1px solid #3DCC8040; }
+.allowBtn     { background: var(--green); color: #0D0F12; }
+
+/* ── AskUserQuestion layout ───────────────────────── */
+.questionBlock { margin-bottom: 10px; }
+.questionBlock:last-of-type { margin-bottom: 0; }
+
+.questionHeader {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.questionText {
+  font-size: 16px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.optionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  text-align: left;
+  transition: background 0.12s, border-color 0.12s;
+  width: 100%;
+}
+.optionBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--green);
+}
+
+.optionLabel {
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.optionDesc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.denySmall {
+  margin-top: 10px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: transparent;
+  transition: background 0.12s;
+}
+.denySmall:hover { background: var(--bg-hover); color: var(--text-secondary); }
+
+/* ── Mobile ───────────────────────────────────────── */
+@media (max-width: 700px) {
+  .actions { justify-content: stretch; flex-wrap: wrap; }
+  .denyBtn { order: 3; flex: 1; }
+  .allowAlwaysBtn { order: 2; flex: 1; }
+  .allowBtn { order: 1; flex: 1; }
+}

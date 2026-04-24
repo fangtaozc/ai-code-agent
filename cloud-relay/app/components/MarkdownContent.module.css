@@ -1,0 +1,169 @@
+/* ── Root container ──────────────────────────────────── */
+.md {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+/* ── Paragraphs ──────────────────────────────────────── */
+.md :global(p) {
+  margin: 0.35em 0;
+}
+.md :global(p:first-child) { margin-top: 0; }
+.md :global(p:last-child)  { margin-bottom: 0; }
+
+/* ── Headings ────────────────────────────────────────── */
+.md :global(h1) {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 1em 0 0.4em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--border);
+}
+.md :global(h2) {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0.9em 0 0.35em;
+}
+.md :global(h3) {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0.75em 0 0.3em;
+}
+.md :global(h4),
+.md :global(h5),
+.md :global(h6) {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0.6em 0 0.25em;
+}
+.md :global(h1:first-child),
+.md :global(h2:first-child),
+.md :global(h3:first-child) {
+  margin-top: 0;
+}
+
+/* ── Lists ───────────────────────────────────────────── */
+.md :global(ul),
+.md :global(ol) {
+  padding-left: 1.6em;
+  margin: 0.4em 0;
+}
+.md :global(li) {
+  margin: 0.2em 0;
+}
+.md :global(li > p) {
+  margin: 0.1em 0;
+}
+
+/* ── Blockquote ──────────────────────────────────────── */
+.md :global(blockquote) {
+  border-left: 3px solid var(--border-mid);
+  padding: 2px 0 2px 14px;
+  color: var(--text-secondary);
+  margin: 0.5em 0;
+  font-style: italic;
+}
+.md :global(blockquote p) {
+  margin: 0;
+}
+
+/* ── Emphasis ────────────────────────────────────────── */
+.md :global(strong) {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.md :global(em) {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.md :global(del) {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* ── HR ──────────────────────────────────────────────── */
+.md :global(hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1em 0;
+}
+
+/* ── Inline code ─────────────────────────────────────── */
+.codeInline {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--inline-bg);
+  border: 1px solid var(--border-mid);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--inline-text);
+}
+
+/* ── Block code ──────────────────────────────────────── */
+.pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  padding: 14px 18px;
+  overflow-x: auto;
+  margin: 0.65em 0;
+}
+.pre:first-child { margin-top: 0; }
+.pre:last-child  { margin-bottom: 0; }
+
+.codeBlock {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--code-text);
+  line-height: 1.65;
+  white-space: pre;
+  display: block;
+}
+
+/* ── Links ───────────────────────────────────────────── */
+.link {
+  color: var(--blue);
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Tables ──────────────────────────────────────────── */
+.md :global(table) {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.65em 0;
+  font-size: 0.9em;
+  display: block;
+  overflow-x: auto;
+}
+.md :global(th),
+.md :global(td) {
+  border: 1px solid var(--border-mid);
+  padding: 6px 14px;
+  text-align: left;
+}
+.md :global(th) {
+  background: var(--bg-panel);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+}
+.md :global(tr:nth-child(even) td) {
+  background: rgba(128, 128, 128, 0.05);
+}
+
+/* ── Task list checkboxes ────────────────────────────── */
+.md :global(input[type='checkbox']) {
+  accent-color: var(--blue);
+  margin-right: 6px;
+}

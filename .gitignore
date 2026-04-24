@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.next/
+tsconfig.tsbuildinfo
+
+# Environment / Secrets  ← DO NOT COMMIT
+.env
+agent-bridge/.env
+cloud-relay/.env
+secrets.local.md
+*.local.md
+
+# Logs
+*.log
+/tmp/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
+
+# PID files (created by start-local.sh)
+*.pids
+
+# Internal notes (Chinese)
+操作文件.md

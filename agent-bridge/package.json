@@ -1,0 +1,24 @@
+{
+  "name": "agent-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/bridge.ts",
+    "cloud": "node --env-file=.env --import tsx/esm src/bridge-ws.ts --cloud",
+    "cloud:codex": "node --env-file=.env --import tsx/esm src/bridge-ws-codex.ts --cloud",
+    "validate": "tsx src/validate-cantool.ts",
+    "dev": "tsx watch src/bridge.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.114",
+    "@openai/codex-sdk": "^0.122.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
