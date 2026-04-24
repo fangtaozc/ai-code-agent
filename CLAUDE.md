@@ -78,14 +78,12 @@ cd cloud-relay && npm run typecheck
 
 ## 环境变量
 
-`agent-bridge/.env`：
+`configs/config`（统一配置，git-ignored）：
 - `ANTHROPIC_API_KEY` — Claude API Key
 - `ANTHROPIC_BASE_URL` — 代理地址（可选）
 - `OPENAI_API_KEY` — Codex API Key
 - `OPENAI_BASE_URL` — Azure/代理地址（可选）
-- `RELAY_URL` — cloud-relay 的 WebSocket 地址
-
-`cloud-relay/.env`：
 - `PORT` — 端口，默认 3000
-- `NODE_ENV` — production / development
-- `ACCESS_TOKEN` — 设置后启用登录页（本地使用留空）
+- `ACCESS_TOKEN` — 启用登录（本地使用留空）
+
+`configs/config.example`（提交到仓库的模板）：同上，值为空占位符

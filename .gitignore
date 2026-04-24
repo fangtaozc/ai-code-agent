@@ -6,16 +6,20 @@ dist/
 .next/
 tsconfig.tsbuildinfo
 
-# Environment / Secrets  ← DO NOT COMMIT
+# 实际配置文件（含 API Key），不上传仓库
+# config.example 是模板，会提交；config 是你填写的实际配置，不会提交
+configs/config
+
+# 旧版 .env 文件（已迁移到 configs/，保留规则防止误提交）
 .env
-agent-bridge/.env
-cloud-relay/.env
+**/.env
+
+# 个人备份文件
 secrets.local.md
 *.local.md
 
-# Logs
-*.log
-/tmp/
+# 运行时临时文件（PID、日志），由 start-local.sh 生成
+tmp/
 
 # OS / Editor
 .DS_Store
@@ -23,8 +27,5 @@ Thumbs.db
 .idea/
 .vscode/settings.json
 
-# PID files (created by start-local.sh)
-*.pids
-
-# Internal notes (Chinese)
+# Internal notes
 操作文件.md

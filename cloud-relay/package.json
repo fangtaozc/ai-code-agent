@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx --env-file=../configs/config watch src/server.ts",
     "build": "next build",
-    "start": "tsx --env-file=.env src/server.ts",
+    "start": "tsx --env-file=../configs/config src/server.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

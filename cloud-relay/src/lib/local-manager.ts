@@ -3,7 +3,11 @@ import * as path from 'node:path';
 import * as os from 'node:os';
 import { spawn } from 'node:child_process';
 
-const STATE_FILE = path.join(os.homedir(), '.agent-bridge', 'local-state.json');
+const STATE_FILE = path.join(
+  os.homedir(),
+  '.agent-bridge',
+  `local-state-${process.env.PORT ?? '3000'}.json`
+);
 
 function bridgeDir(): string {
   return process.env.AGENT_BRIDGE_DIR ?? path.resolve(process.cwd(), '..', 'agent-bridge');
@@ -89,7 +93,8 @@ export function startProject(projectPath: string): 'ok' | 'already_running' | 'n
 
   let extraEnv: Record<string, string> = {};
   try {
-    const lines = fs.readFileSync(path.join(dir, '.env'), 'utf8').split('\n');
+    const configFile = path.join(path.dirname(dir), 'configs', 'config');
+    const lines = fs.readFileSync(configFile, 'utf8').split('\n');
     for (const line of lines) {
       const m = line.match(/^([^#=\s][^=]*)=(.*)$/);
       if (m) extraEnv[m[1].trim()] = m[2].trim().replace(/^["']|["']$/g, '');

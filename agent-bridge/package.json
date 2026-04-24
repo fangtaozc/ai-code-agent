@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx src/bridge.ts",
-    "cloud": "node --env-file=.env --import tsx/esm src/bridge-ws.ts --cloud",
-    "cloud:codex": "node --env-file=.env --import tsx/esm src/bridge-ws-codex.ts --cloud",
+    "cloud": "node --env-file=../configs/config --import tsx/esm src/bridge-ws.ts --cloud",
+    "cloud:codex": "node --env-file=../configs/config --import tsx/esm src/bridge-ws-codex.ts --cloud",
     "validate": "tsx src/validate-cantool.ts",
     "dev": "tsx watch src/bridge.ts"
   },

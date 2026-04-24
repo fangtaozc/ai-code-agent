@@ -2,12 +2,21 @@
 # 停止所有本地 ai-code-agent 服务
 # 读取 start-local.sh 写入的 PID 文件，逐一终止进程
 
-PID_FILE="/tmp/ai-code-agent-local.pids"
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+CONFIG_FILE="$ROOT/configs/config"
+PID_FILE="$ROOT/tmp/local.pids"
 
 if [ ! -f "$PID_FILE" ]; then
   echo "[stop] 未找到 PID 文件：$PID_FILE"
   echo "[stop] 服务可能未在运行，或已被手动停止"
   exit 0
+fi
+
+# 从配置文件读取端口（用于清理残留进程）
+PORT=3000
+if [ -f "$CONFIG_FILE" ]; then
+  _PORT=$(grep '^PORT=' "$CONFIG_FILE" | cut -d= -f2 | tr -d '[:space:]')
+  [ -n "$_PORT" ] && PORT="$_PORT"
 fi
 
 echo "[stop] 正在停止本地服务..."
@@ -25,13 +34,12 @@ while IFS= read -r PID; do
   fi
 done < "$PID_FILE"
 
-# 等待一秒后清理端口残留进程（兜底）
 sleep 1
 
-# 额外：清理仍占用 3000 端口的进程（防止 nohup 子进程逃逸）
-RELAY_PID_ON_PORT=$(lsof -ti tcp:3000 2>/dev/null || true)
+# 清理端口残留（只清理本配置的端口，不影响其他服务）
+RELAY_PID_ON_PORT=$(lsof -ti tcp:"$PORT" 2>/dev/null || true)
 if [ -n "$RELAY_PID_ON_PORT" ]; then
-  echo "[stop] 清理端口 3000 残留进程: PID=$RELAY_PID_ON_PORT"
+  echo "[stop] 清理端口 $PORT 残留进程: PID=$RELAY_PID_ON_PORT"
   kill $RELAY_PID_ON_PORT 2>/dev/null || true
 fi
 
@@ -41,5 +49,4 @@ echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  已停止：$STOPPED 个进程"
 [ "$FAILED" -gt 0 ] && echo "  失败：$FAILED 个进程"
-echo "  PID 文件已清理：$PID_FILE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

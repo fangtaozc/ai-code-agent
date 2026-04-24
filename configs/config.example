@@ -1,0 +1,42 @@
+# ============================================================
+#  AI Code Agent 配置文件
+# ============================================================
+#  填写完以下内容后，运行：
+#    ./start-local.sh /你的/项目路径
+#  即可启动服务。
+# ============================================================
+
+
+# ── Claude（Anthropic AI）──────────────────────────────────────
+# 用 Claude 时必填。
+# 获取地址：https://console.anthropic.com/api-keys
+# Key 格式以 sk-ant- 开头
+ANTHROPIC_API_KEY=
+
+# 如果通过代理或内部接口访问 Claude，填入代理地址，否则留空
+# 示例：ANTHROPIC_BASE_URL=http://your-proxy.example.com
+ANTHROPIC_BASE_URL=
+
+
+# ── Codex（OpenAI / Azure AI）──────────────────────────────────
+# 用 Codex 时必填。
+# 获取地址：https://platform.openai.com/api-keys
+# Key 格式以 sk- 开头；Azure 的 Key 通常是一串字母数字
+OPENAI_API_KEY=
+
+# 如果通过 Azure OpenAI 或代理访问，填入对应地址，否则留空
+# 示例：OPENAI_BASE_URL=https://your-resource.openai.azure.com/openai/v1
+OPENAI_BASE_URL=
+
+
+# ── 服务端口 ────────────────────────────────────────────────────
+# 默认 3000，启动后访问 http://localhost:3000/bridge
+# 如果 3000 端口被其他程序占用，改成其他数字，比如 3001
+PORT=3000
+
+
+# ── 访问密码（可选）────────────────────────────────────────────
+# 本地自用：留空，不需要密码，直接打开网页即可
+# 部署到公网服务器：填写一个密码，打开网页时会要求输入
+# 示例：ACCESS_TOKEN=my-secret-password
+ACCESS_TOKEN=

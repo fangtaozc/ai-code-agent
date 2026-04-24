@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import styles from './DirPicker.module.css';
-import * as os from 'os';
 
 interface DirData { path: string; parent: string; dirs: string[] }
 

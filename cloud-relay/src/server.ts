@@ -21,7 +21,13 @@ async function main() {
   await app.prepare();
 
   const httpServer = createServer((req, res) => {
-    handle(req, res, parse(req.url ?? '/', true));
+    const url = req.url ?? '/';
+    if (url === '/' || url === '') {
+      res.writeHead(302, { Location: '/bridge' });
+      res.end();
+      return;
+    }
+    handle(req, res, parse(url, true));
   });
 
   const wss = new WebSocketServer({ noServer: true });
